@@ -2,6 +2,7 @@ package com.api.crudspring.controllers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -19,11 +20,12 @@ public class TesteArrayController {
   public Boolean TesteArrayByOrder(@RequestBody TesteArray_InputModel inputModel) {
     List<String> palavrasOrder = new ArrayList<>();
     palavrasOrder.addAll(inputModel.getPalavras());
-
-    var resposta = false;
+    Comparator<String> compararPalavras = Comparator.comparing(t -> t.toString());
+    palavrasOrder.sort(compararPalavras);
+    var resposta = true;
     for (int i = 0; i < palavrasOrder.size(); i++) {
-      if (palavrasOrder.get(i) == inputModel.getPalavras().get(i)) {
-        resposta = true;
+      if (palavrasOrder.get(i) != inputModel.getPalavras().get(i)) {
+        return false;
       }
     }
     return resposta;
