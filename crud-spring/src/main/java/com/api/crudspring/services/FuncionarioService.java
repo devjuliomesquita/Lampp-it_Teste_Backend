@@ -1,6 +1,7 @@
 package com.api.crudspring.services;
 
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 import com.api.crudspring.models.Funcionario;
 import com.api.crudspring.repositories.IFuncionarioRepository;
@@ -20,7 +21,12 @@ public class FuncionarioService {
     return funcionarioRepository.save(funcionario);
   }
 
-  public boolean GetByCpf(String cpf) {
-    return funcionarioRepository.GetByCpf(cpf);
+  public List<Funcionario> getAll() {
+    return funcionarioRepository.findAll();
   }
+
+  // public boolean GetByCpf(String cpf) {
+  // return funcionarioRepository.GetByCpf(cpf);
+  // }
+
 }

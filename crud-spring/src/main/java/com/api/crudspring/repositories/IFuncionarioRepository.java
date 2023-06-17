@@ -10,4 +10,5 @@ import com.api.crudspring.models.Funcionario;
 @Repository
 public interface IFuncionarioRepository extends JpaRepository<Funcionario, UUID> {
 
+  // boolean GetByCpf(String cpf);
 }

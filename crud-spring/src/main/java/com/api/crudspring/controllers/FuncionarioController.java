@@ -2,11 +2,13 @@ package com.api.crudspring.controllers;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,11 +32,15 @@ public class FuncionarioController {
 
   @PostMapping
   public ResponseEntity<Object> Create(@RequestBody @Valid CreateFunc_InputModel inputModel) {
-    
+
     Funcionario funcionario = new Funcionario();
     BeanUtils.copyProperties(inputModel, funcionario);
     funcionario.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
     return ResponseEntity.status(HttpStatus.CREATED).body(funcionarioService.save(funcionario));
   }
 
+  @GetMapping
+  public ResponseEntity<List<Funcionario>> GetAll() {
+    return ResponseEntity.status(HttpStatus.OK).body(funcionarioService.getAll());
+  }
 }
