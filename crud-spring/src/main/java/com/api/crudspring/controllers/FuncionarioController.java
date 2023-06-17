@@ -6,7 +6,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.hibernate.query.sqm.SortOrder;
 import org.springframework.beans.BeanUtils;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -46,8 +52,9 @@ public class FuncionarioController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Funcionario>> GetAll() {
-    return ResponseEntity.status(HttpStatus.OK).body(funcionarioService.getAll());
+  public ResponseEntity<Page<Funcionario>> GetAll(
+      @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+    return ResponseEntity.status(HttpStatus.OK).body(funcionarioService.getAll(pageable));
   }
 
   @GetMapping("/{id}")

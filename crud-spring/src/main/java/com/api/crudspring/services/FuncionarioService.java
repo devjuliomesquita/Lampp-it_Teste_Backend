@@ -1,7 +1,8 @@
 package com.api.crudspring.services;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,8 +24,8 @@ public class FuncionarioService {
     return funcionarioRepository.save(funcionario);
   }
 
-  public List<Funcionario> getAll() {
-    return funcionarioRepository.findAll();
+  public Page<Funcionario> getAll(Pageable pageable) {
+    return funcionarioRepository.findAll(pageable);
   }
 
   public Optional<Funcionario> findById(UUID id) {
