@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.hibernate.query.sqm.SortOrder;
 import org.springframework.beans.BeanUtils;
 
 import org.springframework.data.domain.Page;
