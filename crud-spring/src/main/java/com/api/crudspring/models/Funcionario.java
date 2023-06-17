@@ -29,7 +29,7 @@ public class Funcionario implements Serializable {
   private String cpf;
   @Column(nullable = false, length = 30)
   private String cargo;
-  @Column(nullable = false, length = 10)
+  // @Column(length = 10)
   private Integer salario; // Salário em centavos
   @Column(nullable = false)
   private LocalDateTime createdAt;

@@ -19,4 +19,8 @@ public class FuncionarioService {
   public Funcionario save(Funcionario funcionario) {
     return funcionarioRepository.save(funcionario);
   }
+
+  public boolean GetByCpf(String cpf) {
+    return funcionarioRepository.GetByCpf(cpf);
+  }
 }

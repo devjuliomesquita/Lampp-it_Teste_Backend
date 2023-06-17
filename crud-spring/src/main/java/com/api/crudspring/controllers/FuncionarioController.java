@@ -30,6 +30,7 @@ public class FuncionarioController {
 
   @PostMapping
   public ResponseEntity<Object> Create(@RequestBody @Valid CreateFunc_InputModel inputModel) {
+    
     Funcionario funcionario = new Funcionario();
     BeanUtils.copyProperties(inputModel, funcionario);
     funcionario.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));

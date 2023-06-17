@@ -16,6 +16,6 @@ public class CreateFunc_InputModel {
   private String cpf;
   @NotBlank
   private String cargo;
-  @NotEmpty
+  // @NotEmpty
   private Integer salario;
 }
