@@ -2,6 +2,8 @@ package com.api.crudspring.services;
 
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import com.api.crudspring.models.Funcionario;
 import com.api.crudspring.repositories.IFuncionarioRepository;
@@ -23,6 +25,10 @@ public class FuncionarioService {
 
   public List<Funcionario> getAll() {
     return funcionarioRepository.findAll();
+  }
+
+  public Optional<Funcionario> findById(UUID id) {
+    return funcionarioRepository.findById(id);
   }
 
   // public boolean GetByCpf(String cpf) {
