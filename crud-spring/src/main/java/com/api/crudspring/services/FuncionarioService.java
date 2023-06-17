@@ -11,4 +11,5 @@ public class FuncionarioService {
   public FuncionarioService(IFuncionarioRepository funcionarioRepository) {
     this.funcionarioRepository = funcionarioRepository;
   }
+
 }
