@@ -2,7 +2,10 @@ package com.api.crudspring.services;
 
 import org.springframework.stereotype.Service;
 
+import com.api.crudspring.models.Funcionario;
 import com.api.crudspring.repositories.IFuncionarioRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class FuncionarioService {
@@ -12,4 +15,8 @@ public class FuncionarioService {
     this.funcionarioRepository = funcionarioRepository;
   }
 
+  @Transactional
+  public Funcionario save(Funcionario funcionario) {
+    return funcionarioRepository.save(funcionario);
+  }
 }
