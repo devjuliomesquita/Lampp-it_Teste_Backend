@@ -31,6 +31,9 @@ public class FuncionarioService {
     return funcionarioRepository.findById(id);
   }
 
+  public void delete(Funcionario funcionario) {
+    funcionarioRepository.delete(funcionario);
+  }
   // public boolean GetByCpf(String cpf) {
   // return funcionarioRepository.GetByCpf(cpf);
   // }
