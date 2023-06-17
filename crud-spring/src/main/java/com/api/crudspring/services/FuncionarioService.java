@@ -2,7 +2,10 @@ package com.api.crudspring.services;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -26,6 +29,12 @@ public class FuncionarioService {
 
   public Page<Funcionario> getAll(Pageable pageable) {
     return funcionarioRepository.findAll(pageable);
+  }
+
+  public List<Funcionario> getAllByOrderByName() {
+    Sort sort = Sort.by("nome").ascending();
+    List<Funcionario> funcionarios = funcionarioRepository.findAll(sort);
+    return funcionarios;
   }
 
   public Optional<Funcionario> findById(UUID id) {

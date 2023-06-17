@@ -57,6 +57,11 @@ public class FuncionarioController {
     return ResponseEntity.status(HttpStatus.OK).body(funcionarioService.getAll(pageable));
   }
 
+  @GetMapping("/byOrder-name")
+  public ResponseEntity<List<Funcionario>> GetAllByOrderName() {
+    return ResponseEntity.status(HttpStatus.OK).body(funcionarioService.getAllByOrderByName());
+  }
+
   @GetMapping("/{id}")
   public ResponseEntity<Object> GetById(@PathVariable(value = "id") UUID id) {
     Optional<Funcionario> funcionario = funcionarioService.findById(id);
