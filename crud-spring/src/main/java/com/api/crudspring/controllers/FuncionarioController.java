@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.crudspring.dtos.CreateFunc_InputModel;
+import com.api.crudspring.dtos.UpdateFunc_InputModel;
 import com.api.crudspring.models.Funcionario;
 import com.api.crudspring.services.FuncionarioService;
 
@@ -65,5 +67,23 @@ public class FuncionarioController {
     }
     funcionarioService.delete(funcionario.get());
     return ResponseEntity.status(HttpStatus.OK).body("Funcionário excluido com sucesso.");
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<Object> Update(@PathVariable(value = "id") UUID id,
+      @RequestBody @Valid UpdateFunc_InputModel inputModel) {
+    Optional<Funcionario> funcionario = funcionarioService.findById(id);
+    if (!funcionario.isPresent()) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Funcionário não encontrado.");
+    }
+    Funcionario funcionarioUpdate = new Funcionario();
+    BeanUtils.copyProperties(inputModel, funcionarioUpdate);
+    funcionarioUpdate.setId(funcionario.get().getId());
+    funcionarioUpdate.setCreatedAt(funcionario.get().getCreatedAt());
+    funcionarioUpdate.setSalario(funcionario.get().getSalario());
+    funcionarioService.save(funcionarioUpdate);
+    return ResponseEntity.status(HttpStatus.OK)
+        .body("Funcionário: " + funcionario.get().getNome() + " atualizado com sucesso.");
+
   }
 }
