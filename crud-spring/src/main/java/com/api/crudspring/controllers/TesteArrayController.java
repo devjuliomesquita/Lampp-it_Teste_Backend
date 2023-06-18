@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.crudspring.dtos.TesteArray_InputModel;
 import com.api.crudspring.services.TesteArrayService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
 @RestController
 @RequestMapping("/api/testeArray")
 public class TesteArrayController {
@@ -21,6 +24,8 @@ public class TesteArrayController {
   }
 
   @PostMapping
+  @Operation(summary = "Informar um Array de Strings.", description = "Retorno True ou False para a ordenação da sequência.")
+  @ApiResponse(responseCode = "202", description = "Valores aceitos.")
   public ResponseEntity<String> TesteArrayByOrder(@RequestBody TesteArray_InputModel inputModel) {
     var resposta = testeArrayService.TestandoArray(inputModel);
     if (resposta) {
