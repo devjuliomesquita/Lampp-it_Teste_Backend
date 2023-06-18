@@ -26,6 +26,7 @@ public class TesteArrayController {
   @PostMapping
   @Operation(summary = "Informar um Array de Strings.", description = "Retorno True ou False para a ordenação da sequência.")
   @ApiResponse(responseCode = "202", description = "Valores aceitos.")
+  @ApiResponse(responseCode = "400", description = "Valores informado não estão na forma de Array.")
   public ResponseEntity<String> TesteArrayByOrder(@RequestBody TesteArray_InputModel inputModel) {
     var resposta = testeArrayService.TestandoArray(inputModel);
     if (resposta) {
