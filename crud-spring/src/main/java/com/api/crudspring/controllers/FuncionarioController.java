@@ -1,7 +1,5 @@
 package com.api.crudspring.controllers;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -44,10 +42,9 @@ public class FuncionarioController {
   @PostMapping
   public ResponseEntity<Object> Create(@RequestBody @Valid CreateFunc_InputModel inputModel) {
 
-    Funcionario funcionario = new Funcionario();
-    BeanUtils.copyProperties(inputModel, funcionario);
-    funcionario.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
-    return ResponseEntity.status(HttpStatus.CREATED).body(funcionarioService.save(funcionario));
+    var funcionario = funcionarioService.Create(inputModel);
+    funcionarioService.save(funcionario);
+    return ResponseEntity.status(HttpStatus.CREATED).body("Funcionário criado com sucesso.");
   }
 
   @GetMapping
