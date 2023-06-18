@@ -1,4 +1,7 @@
 # Lampp-it_Teste_Backend JAVA
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/devjuliomesquita/Blog_Escola_DotNet/blob/master/LICENSE.txt) 
+
+# Sobre o projeto
 Este repositório contém um desafio, foi construido um simples CRUD de uma entidade funcionário. É possível criar, atualizar deletar e retornar funcionários. Aplicação é do tipo API Rest contruida com Java Spring .
 
 
@@ -8,6 +11,7 @@ Este repositório contém um desafio, foi construido um simples CRUD de uma enti
 - [Configuração](#uso)
 - [API Endpoints](#api-endpoints)
 - [Database](#database)
+- [Documentação](#documentação)
 
 ## Instalação
 
@@ -54,3 +58,8 @@ Para [install PostgresSQL](https://www.postgresql.org/download/) você pode inst
 
 ## Documentação
 O projeto foi testado e documentado via Thunder Client e Swagger.
+
+<div style="display: inline_block" align="center">
+  <img width=49% src="https://github.com/devjuliomesquita/Lampp-it_Teste_Backend/blob/main/acetss/swagger1.png"/>
+  <img width=49% src="https://github.com/devjuliomesquita/Lampp-it_Teste_Backend/blob/main/acetss/swagger2.png"/>
+</div>
