@@ -1,10 +1,6 @@
 package com.api.crudspring.controllers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,22 +8,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.crudspring.dtos.TesteArray_InputModel;
+import com.api.crudspring.services.TesteArrayService;
 
 @RestController
 @RequestMapping("/api/testeArray")
 public class TesteArrayController {
+
+  private final TesteArrayService testeArrayService;
+
+  public TesteArrayController(TesteArrayService testeArrayService) {
+    this.testeArrayService = testeArrayService;
+  }
+
   @PostMapping
-  public Boolean TesteArrayByOrder(@RequestBody TesteArray_InputModel inputModel) {
-    List<String> palavrasOrder = new ArrayList<>();
-    palavrasOrder.addAll(inputModel.getPalavras());
-    Comparator<String> compararPalavras = Comparator.comparing(t -> t.toString());
-    palavrasOrder.sort(compararPalavras);
-    var resposta = true;
-    for (int i = 0; i < palavrasOrder.size(); i++) {
-      if (palavrasOrder.get(i) != inputModel.getPalavras().get(i)) {
-        return false;
-      }
+  public ResponseEntity<String> TesteArrayByOrder(@RequestBody TesteArray_InputModel inputModel) {
+    var resposta = testeArrayService.TestandoArray(inputModel);
+    if (resposta) {
+      return ResponseEntity.status(HttpStatus.ACCEPTED).body("True: Lista informada está em ordem alfabética.");
     }
-    return resposta;
+    return ResponseEntity.status(HttpStatus.ACCEPTED).body("False: Lista informada não está em ordem alfabética.");
   }
 }
