@@ -12,12 +12,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import javax.transaction.Transactional;
+
 import com.api.crudspring.dtos.CreateFunc_InputModel;
 import com.api.crudspring.dtos.UpdateFunc_InputModel;
 import com.api.crudspring.models.Funcionario;
 import com.api.crudspring.repositories.IFuncionarioRepository;
-
-import jakarta.transaction.Transactional;
 
 @Service
 public class FuncionarioService {

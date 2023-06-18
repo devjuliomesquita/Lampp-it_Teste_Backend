@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -24,8 +26,6 @@ import com.api.crudspring.dtos.CreateFunc_InputModel;
 import com.api.crudspring.dtos.UpdateFunc_InputModel;
 import com.api.crudspring.models.Funcionario;
 import com.api.crudspring.services.FuncionarioService;
-
-import jakarta.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
