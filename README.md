@@ -1,5 +1,5 @@
 # Lampp-it_Teste_Backend JAVA
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/devjuliomesquita/Blog_Escola_DotNet/blob/master/LICENSE.txt) 
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/devjuliomesquita/Lampp-it_Teste_Backend/blob/main/LICENSE) 
 
 # Sobre o projeto
 Este repositório contém um desafio, foi construido um simples CRUD de uma entidade funcionário. É possível criar, atualizar deletar e retornar funcionários. Aplicação é do tipo API Rest contruida com Java Spring .
