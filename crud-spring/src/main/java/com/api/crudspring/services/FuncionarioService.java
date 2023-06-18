@@ -13,6 +13,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import com.api.crudspring.dtos.CreateFunc_InputModel;
+import com.api.crudspring.dtos.UpdateFunc_InputModel;
 import com.api.crudspring.models.Funcionario;
 import com.api.crudspring.repositories.IFuncionarioRepository;
 
@@ -54,6 +55,16 @@ public class FuncionarioService {
     BeanUtils.copyProperties(inputModel, funcionario);
     funcionario.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
     return funcionario;
+  }
+
+  public Funcionario Update(Optional<Funcionario> funcionario, UpdateFunc_InputModel inputModel) {
+    Funcionario funcionarioUpdate = new Funcionario();
+
+    BeanUtils.copyProperties(inputModel, funcionarioUpdate);
+    funcionarioUpdate.setId(funcionario.get().getId());
+    funcionarioUpdate.setCreatedAt(funcionario.get().getCreatedAt());
+    funcionarioUpdate.setSalario(funcionario.get().getSalario());
+    return funcionarioUpdate;
   }
 
 }

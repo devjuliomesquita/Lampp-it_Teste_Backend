@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.springframework.beans.BeanUtils;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -84,14 +82,10 @@ public class FuncionarioController {
     if (!funcionario.isPresent()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Funcionário não encontrado.");
     }
-    Funcionario funcionarioUpdate = new Funcionario();
-    BeanUtils.copyProperties(inputModel, funcionarioUpdate);
-    funcionarioUpdate.setId(funcionario.get().getId());
-    funcionarioUpdate.setCreatedAt(funcionario.get().getCreatedAt());
-    funcionarioUpdate.setSalario(funcionario.get().getSalario());
+    var funcionarioUpdate = funcionarioService.Update(funcionario, inputModel);
     funcionarioService.save(funcionarioUpdate);
     return ResponseEntity.status(HttpStatus.OK)
-        .body("Funcionário: " + funcionario.get().getNome() + " atualizado com sucesso.");
+        .body("Funcionário: " + funcionarioUpdate.getNome() + " atualizado com sucesso.");
 
   }
 }
