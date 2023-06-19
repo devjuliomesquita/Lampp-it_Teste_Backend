@@ -1,4 +1,4 @@
-# Lampp-it_Teste_Backend JAVA
+# Lampp-it Teste Backend JAVA
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/devjuliomesquita/Lampp-it_Teste_Backend/blob/main/LICENSE) 
 
 # Sobre o projeto
